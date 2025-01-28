@@ -1,0 +1,47 @@
+/* Styles généraux */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.image-container {
+  display: grid; /* Utilisation de Grid Layout */
+  gap: 10px; /* Espacement entre les images */
+  padding: 10px;
+}
+
+/* Images */
+.image-container img {
+  width: 100%; /* Les images remplissent leur conteneur */
+  height: auto; /* Maintient les proportions */
+  border: 1px solid #ddd; /* Optionnel : bordure pour distinguer les images */
+  border-radius: 5px; /* Coins arrondis */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : ombre */
+}
+
+/* Grille pour grand écran (3 colonnes) */
+@media (min-width: 1024px) {
+  .image-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Grille pour tablette (2 colonnes) */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .image-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Grille pour téléphone (1 colonne) */
+@media (max-width: 768px) {
+  .image-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.logo {
+  background-color: grey;
+}
