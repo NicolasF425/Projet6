@@ -6,10 +6,23 @@ body {
   box-sizing: border-box;
 }
 
+.container {
+  display: flex; /* Utilisation de Flexbox */
+  align-items: flex-start; /* Aligner verticalement */
+  gap: 20px; /* Espacement entre l'image et le texte */
+  max-width: 600px; /* Largeur maximale du bloc */
+}
+
+.text-container {
+  display: flex;
+  flex-direction: line; /* Empile les textes verticalement */
+  gap: 10px; /* Espacement entre les textes */
+}
+
 .image-container {
   display: grid; /* Utilisation de Grid Layout */
-  gap: 10px; /* Espacement entre les images */
-  padding: 10px;
+  gap: 50px; /* Espacement entre les images */
+  padding: 50px;
 }
 
 /* Images */
@@ -40,8 +53,23 @@ body {
   .image-container {
     grid-template-columns: 1fr;
   }
+  
+  .container {
+    flex-direction: column;
+    align-items: center; /* Centre les éléments */
+    text-align: center; /* Centre le texte */
+}
 }
 
 .logo {
   background-color: grey;
+}
+
+.padding {
+  padding: 20px;
+}
+
+.centrage {
+  padding: 20px;
+  text-align: center;
 }
