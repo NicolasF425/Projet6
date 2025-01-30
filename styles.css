@@ -6,6 +6,11 @@ body {
   box-sizing: border-box;
 }
 
+.header-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
 .container {
   display: flex; /* Utilisation de Flexbox */
   align-items: flex-start; /* Aligner verticalement */
@@ -39,12 +44,20 @@ body {
   .image-container {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .site-desc {
+    visibility: visible;
+  }
 }
 
 /* Grille pour tablette (2 colonnes) */
 @media (min-width: 769px) and (max-width: 1023px) {
   .image-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .site-desc {
+    visibility: visible;
   }
 }
 
@@ -58,7 +71,11 @@ body {
     flex-direction: column;
     align-items: center; /* Centre les éléments */
     text-align: center; /* Centre le texte */
-}
+  }
+
+  .site-desc {
+    visibility: hidden
+  }
 }
 
 .logo {
