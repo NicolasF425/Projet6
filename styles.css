@@ -48,6 +48,10 @@ body {
   .site-desc {
     visibility: visible;
   }
+
+  .button-visibility {
+    visibility: hidden;
+  }
 }
 
 /* Grille pour tablette (2 colonnes) */
@@ -57,6 +61,10 @@ body {
   }
 
   .site-desc {
+    visibility: visible;
+  }
+
+  .button-visibility {
     visibility: visible;
   }
 }
@@ -75,6 +83,10 @@ body {
 
   .site-desc {
     visibility: hidden
+  }
+  
+  .button-visibility {
+    visibility: visible;
   }
 }
 
