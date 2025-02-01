@@ -11,13 +11,6 @@ body {
   grid-template-columns: 1fr 2fr;
 }
 
-.container {
-  display: flex; /* Utilisation de Flexbox */
-  align-items: flex-start; /* Aligner verticalement */
-  gap: 20px; /* Espacement entre l'image et le texte */
-  max-width: 600px; /* Largeur maximale du bloc */
-}
-
 .text-container {
   display: flex;
   flex-direction: line; /* Empile les textes verticalement */
@@ -32,6 +25,15 @@ body {
 
 /* Images */
 .image-container img {
+  width: 100%; /* Les images remplissent leur conteneur */
+  height: auto; /* Maintient les proportions */
+  border: 1px solid #ddd; /* Optionnel : bordure pour distinguer les images */
+  border-radius: 5px; /* Coins arrondis */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : ombre */
+}
+
+/* Images */
+.image-container div {
   width: 100%; /* Les images remplissent leur conteneur */
   height: auto; /* Maintient les proportions */
   border: 1px solid #ddd; /* Optionnel : bordure pour distinguer les images */

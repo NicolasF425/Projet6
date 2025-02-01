@@ -1,4 +1,3 @@
-
 async function getFilmsGenre(genre_choisi) {
   let base_url = "http://localhost:8000/api/v1/titles/";
   let genres = ["Mystery", "Drama", genre_choisi];
@@ -29,7 +28,7 @@ async function getFilmsGenre(genre_choisi) {
       }
       json_genre_next = await response.json();
       liste_films.push(json_genre_next.results[0])
-      console.log(liste_films)
+      //console.log(liste_films)
 
     } catch (error) {
       console.error(error.message);
@@ -44,13 +43,28 @@ async function getFilmsGenre(genre_choisi) {
           throw new Error(`Response status: ${response.status}`);
         }
         json_genre = await response.json();
-        console.log(json_genre);
+        //console.log(json_genre);
         // Ajout des éléments
-        imageUrl = json_genre.image_url;
-        img = document.createElement('img');
+        const imageUrl = json_genre.image_url;
+        let img = document.createElement('img');
         img.src = imageUrl;
         img.alt = json_genre.title
-        img_containers.appendChild(img)
+        let div = document.createElement('div');
+        let text = document.createElement('p');
+        let button = document.createElement('button')
+        button.textContent = "Détails";
+        button.id = json_genre.id;
+        button.addEventListener("click", function (e) {
+          let base_url = "http://localhost:8000/api/v1/titles/";
+          let url = base_url + button.id;
+          console.log(url);
+        });
+        text.textContent = json_genre.title;
+        div.style.backgroundImage = imageUrl;
+        div.appendChild(img);
+        div.appendChild(text);
+        div.appendChild(button);
+        img_containers.appendChild(div)
       } catch (error) {
         console.error(error.message);
       }
