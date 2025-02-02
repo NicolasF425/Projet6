@@ -6,6 +6,13 @@ body {
   box-sizing: border-box;
 }
 
+.container {
+  display: flex; /* Utilisation de Flexbox */
+  align-items: flex-start; /* Aligner verticalement */
+  gap: 20px; /* Espacement entre l'image et le texte */
+  max-width: 600px; /* Largeur maximale du bloc */
+}
+
 .header-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -21,24 +28,53 @@ body {
   display: grid; /* Utilisation de Grid Layout */
   gap: 50px; /* Espacement entre les images */
   padding: 50px;
+  position: relative;
+  z-index: 5;
+}
+
+/* div */
+.image-container div {
+  display: flex;
+  width: 100%; /* Les images remplissent leur conteneur */
+  align-content: center;
+  height: auto; /* Maintient les proportions */
+  border-radius: 5px; /* Coins arrondis */
+  position: relative;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Images */
 .image-container img {
   width: 100%; /* Les images remplissent leur conteneur */
+  align-content: center;
   height: auto; /* Maintient les proportions */
-  border: 1px solid #ddd; /* Optionnel : bordure pour distinguer les images */
   border-radius: 5px; /* Coins arrondis */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : ombre */
+  position: relative;
+  z-index: 15;
 }
 
-/* Images */
-.image-container div {
-  width: 100%; /* Les images remplissent leur conteneur */
-  height: auto; /* Maintient les proportions */
-  border: 1px solid #ddd; /* Optionnel : bordure pour distinguer les images */
-  border-radius: 5px; /* Coins arrondis */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : ombre */
+.image-container p {
+  position:absolute;
+  padding: 2%;
+  top: 20%;
+  height: 18%;
+  width: 96%;
+  z-index: 50;
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.image-container button {
+  position: absolute;
+  width: 20%;
+  top: 35%;
+  right: 5%;
+  left: auto;
+  z-index: 55;
+  border-radius: 10px; /* Coins arrondis */
+  color: white;
+  background-color: darkgray;
 }
 
 /* Grille pour grand écran (3 colonnes) */
@@ -103,4 +139,9 @@ body {
 .centrage {
   padding: 20px;
   text-align: center;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
 }

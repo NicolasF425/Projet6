@@ -49,7 +49,6 @@ async function getFilmsGenre(genre_choisi) {
         let img = document.createElement('img');
         img.src = imageUrl;
         img.alt = json_genre.title
-        let div = document.createElement('div');
         let text = document.createElement('p');
         let button = document.createElement('button')
         button.textContent = "Détails";
@@ -60,11 +59,11 @@ async function getFilmsGenre(genre_choisi) {
           console.log(url);
         });
         text.textContent = json_genre.title;
-        div.style.backgroundImage = imageUrl;
+        let div = document.createElement('div');
         div.appendChild(img);
         div.appendChild(text);
         div.appendChild(button);
-        img_containers.appendChild(div)
+        img_containers.appendChild(div);
       } catch (error) {
         console.error(error.message);
       }
