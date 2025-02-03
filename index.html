@@ -9,37 +9,52 @@
 <body>
   <div class="header-container logo">
     <img src="images/logo.png" alt="logo">
-    <p class="site-desc"> Vidéo à la demande</p>
+    <p class="site-desc h2"> Vidéo à la demande</p>
   </div>
-  <p><h2 class="padding">Meilleur film</h2></p>
+  <p class="h2 centrage">Meilleur film</p>
   <div id = "meilleur-film" class="padding container">
     <img id="image-meilleur-film" src="" alt="image meilleur film">
   </div>
   <div class="centrage">
-    <p><h2>Films les mieux notés</h2></p>
+    <p class="h2">Films les mieux notés</p>
   </div>
-  <div id="meilleurs-films" class="image-container">
+  <div id="meilleurs-films" class="image-container content">
   </div>
-  <p><button>Voir plus</button></p>
+  <p><button class="button-visibility">Voir plus</button></p>
   <script src="scripts/meilleurs_films.js"></script>
   <div class="centrage">
-    <p id="texte_genre1"><h2>genre 1</h2></p>
+    <p id="texte_genre1"></p>
   </div>
   <div id="genre1" class="image-container content">
   </div>
   <p><button class="button-visibility">Voir plus</button></p>
   <div class="centrage">
-    <p id="texte_genre2"><h2>genre 2</h2></p>
+    <p id="texte_genre2"></p>
   </div>
   <div id="genre2" class="image-container">
   </div>
   <p><button class="button-visibility">Voir plus</button></p>
   <div class="centrage">
-    <p id="texte_genre_choisi"><h2>genre choisi</h2></p>
+    <p class="h2" id="texte_genre_choisi">Autres : </p>
+    <div>
+      <select id="menu-choix-genre">
+        <option value="Drama">Horror</option>
+        <option value="Action">Action</option>
+      </select>
+    </div>
   </div>
   <div id="genre_choisi" class="image-container">
   </div>
   <p><button class="button-visibility">Voir plus</button></p>
+
+  <div class="modal" id="fiche_film">
+    <div class="modal-content" id="infos-film">
+      <span class="close">&times;</span>
+      <p id="titre_modale">titre</p>
+      <p id="desc_modale">description</p>
+      <img id="img_modale">
+    </div>
+  </div>
   <script src="scripts/genre.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 async function getMeilleursFilms() {
     let base_url = "http://localhost:8000/api/v1/titles/"
     let url_best_imdb_scores = base_url + "?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=-imdb_score&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=";
-    liste_meilleurs_films = []
+    let liste_meilleurs_films = []
     next =""
 
     // récupération des films par scores décroissants
@@ -54,7 +54,7 @@ async function getMeilleursFilms() {
     desc.textContent = json_best.description;
     // Ajout des éléments
     const img_container = document.getElementById('meilleur-film');
-    img_container.innerHTML = ''; // vide le container
+    img_container.innerHTML = ''; // vide le conteneur
     img_container.appendChild(img);
     div = document.createElement('div');
     div.appendChild(titre)
@@ -75,8 +75,22 @@ async function getMeilleursFilms() {
         imageUrl = json.image_url;
         img = document.createElement('img');
         img.src = imageUrl;
-        img.alt = json.title
-        img_containers.appendChild(img)
+        img.alt = json.title;
+        let text = document.createElement('p');
+        text.textContent = json_genre.title;
+        let button = document.createElement('button')
+        button.textContent = "Détails";
+        button.id = json_genre.id;
+        button.addEventListener("click", function (e) {
+          let base_url = "http://localhost:8000/api/v1/titles/";
+          let url = base_url + button.id;
+          console.log(url);
+        });
+        let div = document.createElement('div');
+        div.appendChild(img);
+        div.appendChild(text);
+        div.appendChild(button);
+        img_containers.appendChild(div);
       } catch (error) {
         console.error(error.message);
       }
