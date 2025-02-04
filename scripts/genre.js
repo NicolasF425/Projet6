@@ -175,7 +175,6 @@ async function getFilmInfos(id) {
   } catch (error) {
     console.error(error.message);
   }
-
 }
 
 

@@ -1,16 +1,18 @@
 /* Styles généraux */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
+  margin-top: 25px;
+  margin-left: 8%;
+  margin-right: 8%;
   padding: 0;
   box-sizing: border-box;
 }
 
-.container {
-  display: flex; /* Utilisation de Flexbox */
-  align-items: flex-start; /* Aligner verticalement */
-  gap: 20px; /* Espacement entre l'image et le texte */
-  max-width: 600px; /* Largeur maximale du bloc */
+.container img {
+  width: 100%; /* Les images remplissent leur conteneur à 90% */
+  align-content: center;
+  height: auto; /* Maintient les proportions */
+  border-radius: 5px; /* Coins arrondis */
 }
 
 .header-container {
@@ -26,9 +28,7 @@ body {
 
 .image-container {
   display: grid; /* Utilisation de Grid Layout */
-  gap: 50px; /* Espacement entre les images */
-  margin-left: 75px;
-  margin-right: 75px;
+  gap: 5%; /* Espacement entre les images */
   position: relative;
   z-index: 5;
 }
@@ -55,6 +55,7 @@ body {
   z-index: 15;
 }
 
+/* paragraphe */
 .image-container p {
   position:absolute;
   padding: 2%;
@@ -80,6 +81,14 @@ body {
 
 /* Grille pour grand écran (3 colonnes) */
 @media (min-width: 1024px) {
+  .container {
+    display: grid;
+    grid-template-columns: 0.9fr 2.1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 2%;
+  }
+
   .image-container {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -87,7 +96,7 @@ body {
   .site-desc {
     visibility: visible;
     color: white;
-    margin-top: 6%;
+    margin-top: 7%;
   }
 
   .button-visibility {
@@ -95,13 +104,21 @@ body {
   }
 
   .centrage {
-    margin: 75px;
     text-align: left;
   }
+
 }
 
 /* Grille pour tablette (2 colonnes) */
 @media (min-width: 769px) and (max-width: 1023px) {
+  .container {
+    display: grid;
+    grid-template-columns: 0.9fr 2.1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 2%;
+  }
+
   .image-container {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -117,21 +134,24 @@ body {
   }
 
   .centrage {
-    margin: 50px;
     text-align: left;
   }
+
 }
 
 /* Grille pour téléphone (1 colonne) */
 @media (max-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-items: center;
+    padding: 2%;
+  }
+
   .image-container {
     grid-template-columns: 1fr;
-  }
-  
-  .container {
-    flex-direction: column;
-    align-items: center; /* Centre les éléments */
-    text-align: center; /* Centre le texte */
   }
 
   .site-desc {
@@ -143,17 +163,20 @@ body {
   }
 
   .centrage {
-    margin: 50px;
     text-align: center;
   }
+
 }
 
 .logo {
-  background-color: grey;
+  background-color: rgb(123, 155, 175);
+  border-style: solid;
+  border-color: black;
 }
 
-.padding {
-  padding: 20px;
+.cadre-noir {
+  border-style: solid;
+  border-color: black;
 }
 
 .content {
@@ -161,11 +184,15 @@ body {
   z-index: 10;
 }
 
+.h1 {
+  font-size: 3vw;
+}
+
 .h2 {
   font-size: 1.8vw;
   font-weight: bold;
+  margin-top: 5%;
 }
-
 
 .modal {
   display: none; /* Hidden by default */
