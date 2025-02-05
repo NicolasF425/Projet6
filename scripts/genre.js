@@ -146,6 +146,19 @@ async function getFilmsGenreChoisi(genre_choisi) {
         let url = base_url + button.id;
         console.log(url);
       });
+
+      let modal = document.getElementById("fiche_film");
+      let span = document.getElementsByClassName("close")[0];
+      // cliquer sur le bouton affiche la fenetre
+      button.onclick = function() {
+        modal.style.display = "block";
+        getFilmInfos(button.id);
+      }
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
       text.textContent = json_genre.title;
       let div = document.createElement('div');
       div.appendChild(img)

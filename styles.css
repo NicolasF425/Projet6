@@ -28,7 +28,7 @@ body {
 
 .image-container {
   display: grid; /* Utilisation de Grid Layout */
-  gap: 5%; /* Espacement entre les images */
+  gap: 50px; /* Espacement entre les images */
   position: relative;
   z-index: 5;
 }
@@ -106,11 +106,10 @@ body {
   .centrage {
     text-align: left;
   }
-
 }
 
 /* Grille pour tablette (2 colonnes) */
-@media (min-width: 769px) and (max-width: 1023px) {
+@media (min-width: 601px) and (max-width: 1023px) {
   .container {
     display: grid;
     grid-template-columns: 0.9fr 2.1fr;
@@ -136,11 +135,10 @@ body {
   .centrage {
     text-align: left;
   }
-
 }
 
 /* Grille pour téléphone (1 colonne) */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .container {
     display: grid;
     grid-template-columns: 1fr;
@@ -165,7 +163,6 @@ body {
   .centrage {
     text-align: center;
   }
-
 }
 
 .logo {
