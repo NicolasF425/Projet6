@@ -149,12 +149,12 @@ async function getFilmsGenreChoisi(genre_choisi) {
 
       let modal = document.getElementById("fiche_film");
       let span = document.getElementsByClassName("close")[0];
-      // cliquer sur le bouton affiche la fenetre
+      // cliquer sur le bouton affiche la fenetre modale
       button.onclick = function() {
         modal.style.display = "block";
         getFilmInfos(button.id);
       }
-      // When the user clicks on <span> (x), close the modal
+      // un click sur le <span> (x) ferme la modale
       span.onclick = function() {
         modal.style.display = "none";
       }
