@@ -35,6 +35,7 @@ async function getFilmsGenre(genre_choisi) {
 
     // on affiche les films
     const img_containers = document.getElementById(ids[boucle]);
+    // si genre présélectionné : mise à jour du label du genre
     if (boucle < 2) {
       const texte_genre = document.getElementById("texte_genre"+(boucle+1));
       texte_genre.innerHTML =''
@@ -72,7 +73,7 @@ async function getFilmsGenre(genre_choisi) {
           modal.style.display = "block";
           getFilmInfos(button.id);
         }
-        // When the user clicks on <span> (x), close the modal
+        // un click sur le <span> (x) ferme la modale
         span.onclick = function() {
           modal.style.display = "none";
         }
@@ -82,16 +83,35 @@ async function getFilmsGenre(genre_choisi) {
         div.appendChild(img);
         div.appendChild(text);
         div.appendChild(button);
+        if (i<2) {
+          div.classList.add("display-1-2");
+        }
+        if (i>1 && i<4) {
+          div.classList.add("display-3-4");
+        }
+        if(i>3) {
+          div.classList.add("display-5-6");
+        }
         img_containers.appendChild(div);
       } catch (error) {
         console.error(error.message);
       }
     }
+
   }
 
+  // menu déroulant
+  let menu = document.getElementById('menu-choix-genre');
+  let tous_genres = await getListeGenres();
+  for (let g=0; g<tous_genres.length; g++){
+    let item = document.createElement('option');
+    item.value = tous_genres[g];
+    item.textContent = tous_genres[g];
+    menu.appendChild(item);
+  }
   document.getElementById('menu-choix-genre').addEventListener('change', function() {
     console.log('Genre: ', this.value);
-    getFilmsGenreChoisi(this.value)
+    getFilmsGenreChoisi(this.value);
   });
 }
 
@@ -188,6 +208,30 @@ async function getFilmInfos(id) {
   } catch (error) {
     console.error(error.message);
   }
+}
+
+async function getListeGenres() {
+  let urls = ["http://localhost:8000/api/v1/genres", "http://localhost:8000/api/v1/genres/?page=2",
+    "http://localhost:8000/api/v1/genres/?page=3", "http://localhost:8000/api/v1/genres/?page=4",
+    "http://localhost:8000/api/v1/genres/?page=5"
+  ];
+  let liste_genres = [];
+
+  for (let i=0; i<urls.length; i++){
+    response = await fetch(urls[i]);
+    try {
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+      json_genres = await response.json();
+      for (let j=0; j<5; j++){
+        liste_genres.push(json_genres.results[j].name);
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+  return liste_genres;
 }
 
 

@@ -26,7 +26,6 @@ async function getMeilleursFilms() {
       for (let i=0; i<2; i++) {
         liste_meilleurs_films.push(json_scores_next.results[i])
       }
-      console.log(liste_meilleurs_films)
 
     } catch (error) {
       console.error(error.message);
@@ -39,7 +38,7 @@ async function getMeilleursFilms() {
           throw new Error(`Response status: ${response.status}`);
         }
         json_best = await response.json();
-        console.log(json_best);
+        //console.log(json_best);
       } catch (error) {
         console.error(error.message);
       }
@@ -58,7 +57,7 @@ async function getMeilleursFilms() {
     button.addEventListener("click", function (e) {
       let base_url = "http://localhost:8000/api/v1/titles/";
       let url = base_url + button.id;
-      console.log(url);
+      //console.log(url);
     });
 
     let modal = document.getElementById("fiche_film");
@@ -92,7 +91,7 @@ async function getMeilleursFilms() {
           throw new Error(`Response status: ${response.status}`);
         }
         json = await response.json();
-        console.log(json);
+        //console.log(json);
         // Ajout des éléments
         imageUrl = json.image_url;
         img = document.createElement('img');
@@ -106,7 +105,7 @@ async function getMeilleursFilms() {
         button.addEventListener("click", function (e) {
           let base_url = "http://localhost:8000/api/v1/titles/";
           let url = base_url + button.id;
-          console.log(url);
+          //console.log(url);
         });
 
         let modal = document.getElementById("fiche_film");
@@ -116,7 +115,7 @@ async function getMeilleursFilms() {
           modal.style.display = "block";
           getFilmInfos(button.id);
         }
-        // When the user clicks on <span> (x), close the modal
+        // un click sur le <span> (x) ferme la modale
         span.onclick = function() {
           modal.style.display = "none";
         }
@@ -125,6 +124,15 @@ async function getMeilleursFilms() {
         div.appendChild(img);
         div.appendChild(text);
         div.appendChild(button);
+        if (i<2) {
+          div.classList.add("display-1-2");
+        }
+        if (i>1 && i<4) {
+          div.classList.add("display-3-4");
+        }
+        if(i>3) {
+          div.classList.add("display-5-6");
+        }
         img_containers.appendChild(div);
       } catch (error) {
         console.error(error.message);

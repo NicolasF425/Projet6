@@ -37,7 +37,6 @@ body {
 
 /* div */
 .image-container div {
-  display: flex;
   width: 100%; /* Les images remplissent leur conteneur */
   align-content: center;
   height: auto; /* Maintient les proportions */
@@ -124,6 +123,19 @@ body {
   .centrage {
     text-align: left;
   }
+
+  .display-1-2 {
+    display: flex;
+  }
+
+  .display-3-4 {
+    display: flex;
+  }
+
+  .display-5-6 {
+    display: flex;
+  }
+
 }
 
 /* Grille pour tablette (2 colonnes) */
@@ -170,6 +182,19 @@ body {
   .centrage {
     text-align: left;
   }
+
+  .display-1-2 {
+    display: flex;
+  }
+
+  .display-3-4 {
+    display: flex;
+  }
+
+  .display-5-6 {
+    display: none;
+  }
+
 }
 
 /* Grille pour téléphone (1 colonne) */
@@ -213,6 +238,18 @@ body {
 
   .centrage {
     text-align: center;
+  }
+
+  .display-1-2 {
+    display: flex;
+  }
+
+  .display-3-4 {
+    display: none;
+  }
+
+  .display-5-6 {
+    display: none;
   }
 }
 
