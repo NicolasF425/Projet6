@@ -5,9 +5,11 @@ async function getFilmsGenre(genre_choisi) {
   let url_genre = ""; 
   let liste_films = []
 
+  let tous_genres = await getListeGenres();
+
   for (let boucle=0; boucle<3; boucle++) {
     liste_films = []
-    url_genre = base_url + "?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre="+genres[boucle]+"&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=";
+    url_genre = base_url + "?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre="+genres[boucle]+"&genre_contains=&sort_by=-imdb_score&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=";
     
     // récupération des films par scores décroissants
     try {
@@ -60,11 +62,7 @@ async function getFilmsGenre(genre_choisi) {
         let button = document.createElement('button')
         button.textContent = "Détails";
         button.id = json_genre.id;
-        button.addEventListener("click", function (e) {
-          let base_url = "http://localhost:8000/api/v1/titles/";
-          let url = base_url + button.id;
-          console.log(url);
-        });
+        button.addEventListener("click", function (e) {});
 
         let modal = document.getElementById("fiche_film");
         let span = document.getElementsByClassName("close")[0];
@@ -102,7 +100,6 @@ async function getFilmsGenre(genre_choisi) {
 
   // menu déroulant
   let menu = document.getElementById('menu-choix-genre');
-  let tous_genres = await getListeGenres();
   for (let g=0; g<tous_genres.length; g++){
     let item = document.createElement('option');
     item.value = tous_genres[g];
@@ -161,11 +158,7 @@ async function getFilmsGenreChoisi(genre_choisi) {
       let button = document.createElement('button')
       button.textContent = "Détails";
       button.id = json_genre.id;
-      button.addEventListener("click", function (e) {
-        let base_url = "http://localhost:8000/api/v1/titles/";
-        let url = base_url + button.id;
-        console.log(url);
-      });
+      button.addEventListener("click", function (e) {});
 
       let modal = document.getElementById("fiche_film");
       let span = document.getElementsByClassName("close")[0];
