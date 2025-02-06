@@ -1,7 +1,9 @@
-// VARIABLES
+// variables et constantes
 let base_url = "http://localhost:8000/api/v1/titles/";
 let liste_genres = [];
-let genres_fixes = ["Mystery", "Drama"];
+const genres_fixes = ["Mystery", "Drama"];
+const boutons_plus_ids = ["plus_best", "plus_genre1", "plus_genre2", "plus_choix"];
+const divs_ids = ["meilleurs-films", "genre1", "genre2", "genre_choisi"];
 
 
 async function getMeilleursFilms() {
@@ -53,9 +55,10 @@ async function getMeilleursFilms() {
   img.alt = json_best.title;
   const titre = document.createElement('p')
   titre.textContent = json_best.title;
+  titre.classList.add("titre");
   const desc = document.createElement('p');
   desc.textContent = json_best.description;
-  let button = document.createElement('button')
+  let button = document.createElement('button');
   button.textContent = "Détails";
   button.id = json_best.id;
   button.addEventListener("click", function (e) {});
@@ -133,31 +136,36 @@ async function getMeilleursFilms() {
       console.error(error.message);
     }
   }
+  manage_plus_buttons();
+}
 
-  let button_plus = document.getElementById("plus_best");
-  button_plus.addEventListener("click", function (e) {});
-  button_plus.onclick = function() {
-    let meilleurs_films = document.getElementById('meilleurs-films');
-    if (button_plus.textContent == "Voir plus") {
-      let divs34 = meilleurs_films.getElementsByClassName("display-3-4");
-      if (divs34.length > 0) {
-        divs34.item(0).classList.add("display-1-2");
-        divs34.item(1).classList.add("display-1-2");  
-        divs34.item(0).classList.remove("display-3-4");
-        divs34.item(0).classList.remove("display-3-4");
+
+function manage_plus_buttons() {
+  for (let i=0; i<4; i++) {
+    let button_plus = document.getElementById(boutons_plus_ids[i]);
+    button_plus.addEventListener("click", function (e) {});
+    button_plus.onclick = function() {
+      let meilleurs_films = document.getElementById(divs_ids[i]);
+      if (button_plus.textContent == "Voir plus") {
+        let divs34 = meilleurs_films.getElementsByClassName("display-3-4");
+        if (divs34.length > 0) {
+          divs34.item(0).classList.add("display-1-2");
+          divs34.item(1).classList.add("display-1-2");  
+          divs34.item(0).classList.remove("display-3-4");
+          divs34.item(0).classList.remove("display-3-4");
+        }
+        let divs56 = meilleurs_films.getElementsByClassName("display-5-6");
+        if (divs56.length > 0) {
+          divs56.item(0).classList.add("display-1-2");
+          divs56.item(1).classList.add("display-1-2");  
+          divs56.item(0).classList.remove("display-5-6");
+          divs56.item(0).classList.remove("display-5-6");
+        }
+        button_plus.textContent = "Voir moins";
       }
-      let divs56 = meilleurs_films.getElementsByClassName("display-5-6");
-      if (divs56.length > 0) {
-        divs56.item(0).classList.add("display-1-2");
-        divs56.item(1).classList.add("display-1-2");  
-        divs56.item(0).classList.remove("display-5-6");
-        divs56.item(0).classList.remove("display-5-6");
-      }
-      button_plus.textContent = "Voir moins";
     }
   }
 }
-
 
 async function getFilmsGenre(genre_choisi) {
   let genres = [genres_fixes[0], genres_fixes[1], genre_choisi];
@@ -224,12 +232,12 @@ async function getFilmsGenre(genre_choisi) {
 
         let modal = document.getElementById("fiche_film");
         let span = document.getElementsByClassName("close")[0];
-        // cliquer sur le bouton affiche la fenetre
+        // cliquer sur le bouton affiche la fenetre modale
         button.onclick = function() {
           modal.style.display = "block";
           getFilmInfos(button.id);
         }
-        // un click sur le <span> (x) ferme la modale
+        // un click sur le <span> (x) ferme la cache
         span.onclick = function() {
           modal.style.display = "none";
         }
@@ -239,6 +247,7 @@ async function getFilmsGenre(genre_choisi) {
         div.appendChild(img);
         div.appendChild(text);
         div.appendChild(button);
+        // cache les films selon l'affichage
         if (i<2) {
           div.classList.add("display-1-2");
         }
@@ -351,12 +360,22 @@ async function getFilmInfos(id) {
       throw new Error(`Response status: ${response.status}`);
     }
     json_film = await response.json();
-    let titre = document.getElementById("titre_modale");
-    titre.textContent = json_film.title;
-    let desc = document.getElementById("desc_modale");
-    desc.textContent = json_film.description;
     let img = document.getElementById('img_modale');
     img.src = json_film.image_url;
+    let titre = document.getElementById("titre_modale");
+    titre.textContent = json_film.title;
+    let annee_genres = document.getElementById("date_genres_modale");
+    annee_genres.textContent = json_film.year + " - " + json_film.genres;
+    let classification_duree = document.getElementById("classification_duree_pays");
+    classification_duree.textContent = json_film.rated + " - " + json_film.duration + " minutes" + " (" + json_film.countries + ")";
+    let imdb_score = document.getElementById("score_imdb_recettes");
+    imdb_score.textContent = "Score imdb: " + json_film.imdb_score + "/10 - " + "Recettes mondiales: " + json_film.worldwide_gross_income + "$";
+    let realisateur = document.getElementById("realisateur");
+    realisateur.textContent = "Réalisé par : " + json_film.directors;
+    let desc = document.getElementById("desc_modale");
+    desc.textContent = json_film.description;
+    let acteurs = document.getElementById("acteurs");
+    acteurs.textContent = "Avec : " + json_film.actors;
   } catch (error) {
     console.error(error.message);
   }
