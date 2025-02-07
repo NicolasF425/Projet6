@@ -136,32 +136,58 @@ async function getMeilleursFilms() {
       console.error(error.message);
     }
   }
-  manage_plus_buttons();
 }
 
 
+// Gestion des boutons voir plus / voir moins
 function manage_plus_buttons() {
   for (let i=0; i<4; i++) {
     let button_plus = document.getElementById(boutons_plus_ids[i]);
     button_plus.addEventListener("click", function (e) {});
     button_plus.onclick = function() {
       let meilleurs_films = document.getElementById(divs_ids[i]);
-      if (button_plus.textContent == "Voir plus") {
-        let divs34 = meilleurs_films.getElementsByClassName("display-3-4");
-        if (divs34.length > 0) {
-          divs34.item(0).classList.add("display-1-2");
-          divs34.item(1).classList.add("display-1-2");  
-          divs34.item(0).classList.remove("display-3-4");
-          divs34.item(0).classList.remove("display-3-4");
-        }
-        let divs56 = meilleurs_films.getElementsByClassName("display-5-6");
-        if (divs56.length > 0) {
-          divs56.item(0).classList.add("display-1-2");
-          divs56.item(1).classList.add("display-1-2");  
-          divs56.item(0).classList.remove("display-5-6");
-          divs56.item(0).classList.remove("display-5-6");
-        }
-        button_plus.textContent = "Voir moins";
+      switch (button_plus.textContent) {
+        case "Voir plus":
+          let divs34 = meilleurs_films.getElementsByClassName("display-3-4");
+          while (divs34.length > 0) {
+            divs34.item(0).classList.add("display-1-2");
+            divs34.item(0).classList.remove("display-3-4");
+          }
+          let divs56 = meilleurs_films.getElementsByClassName("display-5-6");
+          while (divs56.length > 0) {
+            divs56.item(0).classList.add("display-1-2");  
+            divs56.item(0).classList.remove("display-5-6");
+          }
+          button_plus.textContent = "Voir moins";
+          break;
+        case "Voir moins":
+          let divs = meilleurs_films.getElementsByClassName("display-1-2");
+          if (divs.length>5) {
+            divs.item(5).classList.add("display-5-6");
+          }
+          if (divs.length>4) {
+            divs.item(4).classList.add("display-5-6");
+          }
+          if (divs.length>3) {
+          divs.item(3).classList.add("display-3-4"); 
+          }
+          if (divs.length>2) {
+            divs.item(2).classList.add("display-3-4");
+          }
+          if (divs.length>5) {
+            divs.item(5).classList.remove("display-1-2");
+          }
+          if (divs.length>4) {
+            divs.item(4).classList.remove("display-1-2");
+          }
+          if (divs.length>3) {
+            divs.item(3).classList.remove("display-1-2");
+          }
+          if (divs.length>2) {
+            divs.item(2).classList.remove("display-1-2");
+          }
+          button_plus.textContent = "Voir moins";
+          break;
       }
     }
   }
@@ -409,5 +435,6 @@ async function getListeGenres() {
 getListeGenres();
 getMeilleursFilms();
 getFilmsGenre("Horror");
+manage_plus_buttons();
 
 
