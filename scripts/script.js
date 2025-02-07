@@ -186,7 +186,7 @@ function manage_plus_buttons() {
           if (divs.length>2) {
             divs.item(2).classList.remove("display-1-2");
           }
-          button_plus.textContent = "Voir moins";
+          button_plus.textContent = "Voir plus";
           break;
       }
     }
