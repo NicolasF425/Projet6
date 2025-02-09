@@ -324,3 +324,9 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.text_and_menu {
+  display: grid;
+  grid-template-columns: 0.4fr 2.6fr;
+}
+
