@@ -4,6 +4,7 @@ let liste_genres = [];
 const genres_fixes = ["Mystery", "Drama"];
 const boutons_plus_ids = ["plus_best", "plus_genre1", "plus_genre2", "plus_choix"];
 const divs_ids = ["meilleurs-films", "genre1", "genre2", "genre_choisi"];
+const modal = document.getElementById("fiche_film");
 
 
 async function getMeilleursFilms() {
@@ -44,46 +45,29 @@ async function getMeilleursFilms() {
         throw new Error(`Response status: ${response.status}`);
       }
       json_best = await response.json();
-      //console.log(json_best);
     } catch (error) {
       console.error(error.message);
     }
   
   imageUrl = json_best.image_url;
-  img = document.createElement('img');
+  img = document.getElementById('img_best');
   img.src = imageUrl;
   img.alt = json_best.title;
-  const titre = document.createElement('p')
+  const titre = document.getElementById('best_title')
   titre.textContent = json_best.title;
   titre.classList.add("titre");
-  const desc = document.createElement('p');
+  const desc = document.getElementById('best_desc');
   desc.textContent = json_best.description;
-  let button = document.createElement('button');
-  button.textContent = "Détails";
-  button.id = json_best.id;
+
+  let button = document.getElementById('best_details');
+  button.style = "justify-content: right;"
   button.addEventListener("click", function (e) {});
 
-  let modal = document.getElementById("fiche_film");
-  let span = document.getElementsByClassName("close")[0];
   // cliquer sur le bouton affiche la fenetre
   button.onclick = function() {
     modal.style.display = "block";
     getFilmInfos(button.id);
   }
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-  // Ajout des éléments
-  const img_container = document.getElementById('meilleur-film');
-  img_container.innerHTML = ''; // vide le conteneur
-  img_container.appendChild(img);
-  let div = document.createElement('div');
-  div.appendChild(titre);
-  div.appendChild(desc);
-  div.appendChild(button);
-  img_container.appendChild(div);
-  img_container.classList.add("cadre-noir");
   
   // on sélectionne les 6 suivants
   const img_containers = document.getElementById('meilleurs-films');
@@ -106,18 +90,12 @@ async function getMeilleursFilms() {
       button.id = json.id;
       button.addEventListener("click", function (e) {});
 
-      let modal = document.getElementById("fiche_film");
-      let span = document.getElementsByClassName("close")[0];
       // cliquer sur le bouton affiche la fenetre
       button.onclick = function() {
         modal.style.display = "block";
         getFilmInfos(button.id);
       }
-      // un click sur le <span> (x) la cache
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-
+      
       let div = document.createElement('div');
       div.appendChild(img);
       div.appendChild(text);
@@ -256,18 +234,12 @@ async function getFilmsGenre(genre_choisi) {
         button.id = json_genre.id;
         button.addEventListener("click", function (e) {});
 
-        let modal = document.getElementById("fiche_film");
-        let span = document.getElementsByClassName("close")[0];
         // cliquer sur le bouton affiche la fenetre modale
         button.onclick = function() {
           modal.style.display = "block";
           getFilmInfos(button.id);
         }
-        // un click sur le <span> (x) ferme la cache
-        span.onclick = function() {
-          modal.style.display = "none";
-        }
-          
+                  
         text.textContent = json_genre.title;
         let div = document.createElement('div');
         div.appendChild(img);
@@ -352,19 +324,15 @@ async function getFilmsGenreChoisi(genre_choisi) {
       button.textContent = "Détails";
       button.id = json_genre.id;
       button.addEventListener("click", function (e) {});
-
+      
       let modal = document.getElementById("fiche_film");
-      let span = document.getElementsByClassName("close")[0];
-      // cliquer sur le bouton affiche la fenetre modale
+      
+      // cliquer sur le bouton Détails affiche la fenetre modale
       button.onclick = function() {
         modal.style.display = "block";
         getFilmInfos(button.id);
       }
-      // un click sur le <span> (x) ferme la modale
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-
+      
       text.textContent = json_genre.title;
       let div = document.createElement('div');
       div.appendChild(img)
@@ -432,9 +400,27 @@ async function getListeGenres() {
 }
 
 
+// gestion des bouton de fermeture
+function manage_modal_closing() {
+  let span = document.getElementsByClassName("close")[0];
+  let button = document.getElementById("bouton_fermer");
+  // un click sur le <span> (x)
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  // bouton Fermer
+  button.onclick = function() {
+    modal.style.display = "none";
+  }
+
+}
+
+
 getListeGenres();
 getMeilleursFilms();
 getFilmsGenre("Horror");
 manage_plus_buttons();
+manage_modal_closing();
+
 
 

@@ -8,6 +8,7 @@ body {
   box-sizing: border-box;
 }
 
+/* bloc superieur */
 .container img {
   width: 100%; /* Les images remplissent leur conteneur */
   align-content: center;
@@ -20,8 +21,8 @@ body {
 
 .container div {
   padding-left: 25px;
-  width: 100%; 
-  height: 100%;
+  width: 85%; 
+  height: 85%;
 }
 
 .container button {
@@ -34,12 +35,11 @@ body {
 }
 
 .voir-plus-button {
+  margin-top: 20px;
   color: white;
   background-color: red;
   border-radius: 10px;
   border: none;
-  right: 5%;
-  left: auto;
 }
 
 
@@ -149,6 +149,20 @@ body {
     display: flex;
   }
 
+  .span {
+    display: none;
+  }
+
+  .bouton_fermer {
+    display: block;
+  }
+
+  .h2 {
+    font-size: 1.8vw;
+    font-weight: bold;
+    margin-top: 5%;
+  }
+
 }
 
 /* Grille pour tablette (2 colonnes) */
@@ -208,6 +222,20 @@ body {
     display: none;
   }
 
+  .span {
+    display: block;
+  }
+
+  .bouton_fermer {
+    display: none;
+  }
+
+  .h2 {
+    font-size: 2vw;
+    font-weight: bold;
+    margin-top: 5%;
+  }
+
 }
 
 /* Grille pour téléphone (1 colonne) */
@@ -264,6 +292,21 @@ body {
   .display-5-6 {
     display: none;
   }
+
+  .span {
+    display: block;
+  }
+
+  .bouton_fermer {
+    display: none;
+  }
+
+  .h2 {
+    font-size: 3vw;
+    font-weight: bold;
+    margin-top: 5%;
+  }
+
 }
 
 .logo {
@@ -280,12 +323,6 @@ body {
 .content {
   position: relative;
   z-index: 10;
-}
-
-.h2 {
-  font-size: 1.8vw;
-  font-weight: bold;
-  margin-top: 5%;
 }
 
 .modal {
@@ -325,8 +362,15 @@ body {
   cursor: pointer;
 }
 
+.infos_and_image {
+  display: grid;
+  grid-template-columns: 2.4fr 0.6fr;
+}
+
 .text_and_menu {
   display: grid;
   grid-template-columns: 0.4fr 2.6fr;
+  margin-top: 30px;
 }
+
 

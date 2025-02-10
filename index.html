@@ -14,7 +14,15 @@
   </div>
   <!-- section meilleur film -->
   <p class="h2 centrage">Meilleur film</p>
-  <div id = "meilleur-film" class="container">
+  <div id = "meilleur-film" class="container cadre-noir">
+    <img src="" id="img_best">
+    <div id="best_infos">
+      <p id="best_title"></p>
+      <p id="best_desc"></p>
+      <div style="display: flex; justify-content: right; padding-right: 10%">
+        <button id="best_details">Détails</button>
+      </div>
+    </div>
   </div>
   <!-- section films les mieux notés -->
   <div class="centrage">
@@ -22,38 +30,45 @@
   </div>
   <div id="meilleurs-films" class="image-container content">
   </div>
-  <p><button id="plus_best" class="button-visibility voir-plus-button">Voir plus</button></p>
+  <div style="display: flex; justify-content: center;">
+    <button id="plus_best" class="button-visibility voir-plus-button">Voir plus</button>
+  </div>
   <!-- section genre 1 -->
   <div class="centrage">
     <p id="texte_genre1"></p>
   </div>
   <div id="genre1" class="image-container content">
   </div>
-  <p><button id="plus_genre1" class="button-visibility voir-plus-button">Voir plus</button></p>
+  <div style="display: flex; justify-content: center;">
+    <button id="plus_genre1" class="button-visibility voir-plus-button">Voir plus</button>
+  </div>
   <!-- section genre 2 -->
   <div class="centrage">
     <p id="texte_genre2"></p>
   </div>
   <div id="genre2" class="image-container">
   </div>
-  <p><button id="plus_genre2" class="button-visibility voir-plus-button">Voir plus</button></p>
+  <div style="display: flex; justify-content: center;">
+    <button id="plus_genre2" class="button-visibility voir-plus-button">Voir plus</button>
+  </div>
   <!-- section genre au choix -->
   <div class="text_and_menu">
     <p class="h2" id="texte_genre_choisi">Autres : </p>
     <div>
-      <select id="menu-choix-genre">
+      <select id="menu-choix-genre" style="margin-top: 10px;">
       </select>
     </div>
   </div>
   <div id="genre_choisi" class="image-container">
   </div>
-  <p><button id="plus_choix" class="button-visibility voir-plus-button">Voir plus</button></p>
+  <div style="display: flex; justify-content: center;">
+    <button id="plus_choix" class="button-visibility voir-plus-button">Voir plus</button>
+  </div>
   <!-- section fiche film / modale -->
   <div class="modal" id="fiche_film">
     <div class="modal-content" id="infos-film">
-      <span class="close">&times;</span>
-      <div class="text_and_menu">
-        <img id="img_modale">
+      <span class="close span">&times;</span>
+      <div class="infos_and_image">
         <div>
           <p id="titre_modale">titre</p>
           <p id="date_genres_modale">date sortie</p>
@@ -61,9 +76,11 @@
           <p id="score_imdb_recettes">score</p>
           <p id="realisateur">realisateur</p>
         </div>
+        <img id="img_modale">
       </div>
       <p id="acteurs">acteurs</p>
       <p id="desc_modale">description</p>
+      <button class="bouton_fermer" id="bouton_fermer">Fermer</button>
     </div>
   </div>
   <script src="scripts/script.js"></script>
