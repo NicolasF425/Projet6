@@ -66,7 +66,7 @@ async function getMeilleursFilms() {
   // cliquer sur le bouton affiche la fenetre
   button.onclick = function() {
     modal.style.display = "block";
-    getFilmInfos(button.id);
+    getFilmInfos(json_best.id);
   }
   
   // on sélectionne les 6 suivants
@@ -83,6 +83,7 @@ async function getMeilleursFilms() {
       img = document.createElement('img');
       img.src = imageUrl;
       img.alt = json.title;
+
       let text = document.createElement('p');
       text.textContent = json.title;
       let button = document.createElement('button')
@@ -270,6 +271,7 @@ async function getFilmsGenre(genre_choisi) {
     item.textContent = liste_genres[g];
     menu.appendChild(item);
   }
+
   document.getElementById('menu-choix-genre').addEventListener('change', function() {
     console.log('Genre: ', this.value);
     getFilmsGenreChoisi(this.value);
@@ -278,9 +280,9 @@ async function getFilmsGenre(genre_choisi) {
 
 
 async function getFilmsGenreChoisi(genre_choisi) {
-  let base_url = "http://localhost:8000/api/v1/titles/";
   liste_films = []
   url_genre = base_url + "?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre="+genre_choisi+"&genre_contains=&sort_by=-imdb_score&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=";
+    
   // récupération des films par scores décroissants
   try {
     // les 5 premiers
@@ -299,14 +301,16 @@ async function getFilmsGenreChoisi(genre_choisi) {
       throw new Error(`Response status: ${response.status}`);
     }
     json_genre_next = await response.json();
-    liste_films.push(json_genre_next.results[0])
+    liste_films.push(json_genre_next.results[0]);
+
   } catch (error) {
     console.error(error.message);
   }
 
   // on affiche les films
   const img_containers = document.getElementById("genre_choisi");
-  img_containers.innerHTML=''
+  img_containers.innerHTML = '';
+  
   for (let i=0; i<6; i++){
     try {
       response = await fetch(base_url + liste_films[i].id);
@@ -314,30 +318,47 @@ async function getFilmsGenreChoisi(genre_choisi) {
         throw new Error(`Response status: ${response.status}`);
       }
       json_genre = await response.json();
+
       // Ajout des éléments
       const imageUrl = json_genre.image_url;
       let img = document.createElement('img');
       img.src = imageUrl;
+      checkImageSrc(imageUrl, (isValid) => {
+        if (isValid) {
+            //console.log("L'image est valide !");
+        } else {
+            //console.log("L'image est invalide !");
+            img.src = "images/replacement.png";
+        }
+      });
       img.alt = json_genre.title
       let text = document.createElement('p');
       let button = document.createElement('button')
       button.textContent = "Détails";
       button.id = json_genre.id;
       button.addEventListener("click", function (e) {});
-      
-      let modal = document.getElementById("fiche_film");
-      
-      // cliquer sur le bouton Détails affiche la fenetre modale
+
+      // cliquer sur le bouton affiche la fenetre modale
       button.onclick = function() {
         modal.style.display = "block";
         getFilmInfos(button.id);
       }
-      
+                
       text.textContent = json_genre.title;
       let div = document.createElement('div');
-      div.appendChild(img)
+      div.appendChild(img);
       div.appendChild(text);
       div.appendChild(button);
+      // cache les films selon l'affichage
+      if (i<2) {
+        div.classList.add("display-1-2");
+      }
+      if (i>1 && i<4) {
+        div.classList.add("display-3-4");
+      }
+      if(i>3) {
+        div.classList.add("display-5-6");
+      }
       img_containers.appendChild(div);
     } catch (error) {
       console.error(error.message);
@@ -376,6 +397,7 @@ async function getFilmInfos(id) {
 }
 
 
+// Récupère et rempli la liste des genres de films
 async function getListeGenres() {
   let urls = ["http://localhost:8000/api/v1/genres", "http://localhost:8000/api/v1/genres/?page=2",
     "http://localhost:8000/api/v1/genres/?page=3", "http://localhost:8000/api/v1/genres/?page=4",
@@ -412,7 +434,14 @@ function manage_modal_closing() {
   button.onclick = function() {
     modal.style.display = "none";
   }
+}
 
+
+function checkImageSrc(url, callback) {
+  const img = new Image();
+  img.onload = () => callback(true);  // L'image est valide
+  img.onerror = () => callback(false); // L'image est invalide
+  img.src = url;
 }
 
 
