@@ -42,7 +42,6 @@ body {
   border: none;
 }
 
-
 .text-container {
   display: flex;
   flex-direction: line; /* Empile les textes verticalement */
@@ -167,6 +166,10 @@ body {
     margin-top: 5%;
   }
 
+  .small-screen {
+    display: none;
+  }
+
 }
 
 /* Grille pour tablette (2 colonnes) */
@@ -240,6 +243,10 @@ body {
     margin-top: 5%;
   }
 
+  .big-screen {
+    display: none;
+  }
+
 }
 
 /* Grille pour téléphone (1 colonne) */
@@ -311,6 +318,10 @@ body {
     margin-top: 5%;
   }
 
+  .big-screen {
+    display: none;
+  }
+
 }
 
 .logo {
@@ -344,7 +355,7 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #fff;
   margin: 5% auto; /* 10% from the top and centered */
   padding: 20px;
   border: 3px solid #000;
