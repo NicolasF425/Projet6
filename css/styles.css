@@ -42,12 +42,6 @@ body {
   border: none;
 }
 
-.text-container {
-  display: flex;
-  flex-direction: line; /* Empile les textes verticalement */
-  gap: 10px; /* Espacement entre les textes */
-}
-
 /* div */
 .image-container div {
   width: 100%; /* Les images remplissent leur conteneur */
@@ -101,7 +95,6 @@ body {
   
   .header-container img {
     width: 90%; /* Les images remplissent leur conteneur */
-    align-content: left;
     height: auto; /* Maintient les proportions */
   }
 
@@ -182,7 +175,6 @@ body {
   
   .header-container img {
     width: 90%; /* Les images remplissent leur conteneur */
-    align-content: left;
     height: auto; /* Maintient les proportions */
   }
 
