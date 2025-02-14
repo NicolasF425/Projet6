@@ -146,7 +146,8 @@ body {
   }
 
   .bouton_fermer {
-    display: block;
+    margin: auto;
+    width: 100px;
     background-color: red;
     border-radius: 10px;
     border: none;
@@ -238,7 +239,6 @@ body {
   .big-screen {
     display: none;
   }
-
 }
 
 /* Grille pour téléphone (1 colonne) */
@@ -313,7 +313,6 @@ body {
   .big-screen {
     display: none;
   }
-
 }
 
 .logo {
@@ -356,7 +355,7 @@ body {
 
 /* The Close Button */
 .close {
-  color: #aaa;
+  color: red;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -379,5 +378,3 @@ body {
   grid-template-columns: 0.4fr 2.6fr;
   margin-top: 30px;
 }
-
-

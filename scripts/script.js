@@ -270,7 +270,11 @@ async function getFilmInfos(id) {
     let classification_duree = document.getElementById("classification_duree_pays");
     classification_duree.textContent = json_film.rated + " - " + json_film.duration + " minutes" + " (" + json_film.countries + ")";
     let imdb_score = document.getElementById("score_imdb_recettes");
-    imdb_score.textContent = "Score imdb: " + json_film.imdb_score + "/10 - " + "Recettes mondiales: " + json_film.worldwide_gross_income + "$";
+    recettes = json_film.worldwide_gross_income;
+    if (recettes == null) {
+      recettes = "";
+    }
+    imdb_score.textContent = "Score imdb: " + json_film.imdb_score + "/10 - " + "Recettes mondiales: " + recettes + "$";
     let realisateur = document.getElementById("realisateur");
     realisateur.textContent = "Réalisé par : " + json_film.directors;
     let desc = document.getElementById("desc_modale");
