@@ -125,6 +125,7 @@ async function getFilmsGenre(genre_choisi) {
         }
                   
         text.textContent = json_genre.title;
+        text.classList.add("h3");
         let div = document.createElement('div');
         div.appendChild(img);
         div.appendChild(text);
