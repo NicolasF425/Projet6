@@ -9,7 +9,7 @@ body {
 }
 
 /* bloc superieur */
-.container img {
+.best-movie-block img {
   width: 100%; /* Les images remplissent leur conteneur */
   align-content: center;
   height: auto; /* Maintient les proportions */
@@ -19,18 +19,18 @@ body {
   font-size: 3vw;
 }
 
-.container div {
+.best-movie-block div {
   padding-left: 25px;
   width: 85%; 
   height: 85%;
 }
 
-.container button {
+.best-movie-block button {
   color: white;
   background-color: red;
   border-radius: 15px;
   border: none;
-  height: 40px;
+  height: 35px;
   width: 80px;
 }
 
@@ -43,7 +43,7 @@ body {
 }
 
 /* div */
-.image-container div {
+.images-grid div {
   width: 100%; /* Les images remplissent leur conteneur */
   align-content: center;
   height: auto; /* Maintient les proportions */
@@ -53,7 +53,7 @@ body {
 }
 
 /* Images */
-.image-container img {
+.images-grid img {
   width: 100%; /* Les images remplissent leur conteneur */
   align-content: center;
   height: auto; /* Maintient les proportions */
@@ -61,7 +61,7 @@ body {
 }
 
 /* paragraphe */
-.image-container p {
+.images-grid p {
   position:absolute;
   padding: 4%;
   top: 20%;
@@ -72,7 +72,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.image-container button {
+.images-grid button {
   position: absolute;
   width: 20%;
   top: 42%;
@@ -94,11 +94,11 @@ body {
   }
   
   .header-container img {
-    width: 90%; /* Les images remplissent leur conteneur */
+    width: 90%;
     height: auto; /* Maintient les proportions */
   }
 
-  .container {
+  .best-movie-block {
     display: grid;
     grid-template-columns: 0.9fr 2.1fr;
     align-items: center;
@@ -106,7 +106,7 @@ body {
     padding: 2%;
   }
 
-  .image-container {
+  .images-grid {
     grid-template-columns: repeat(3, 1fr);
     display: grid; /* Utilisation de Grid Layout */
     column-gap: 60px; /* Espacement entre les images */
@@ -185,7 +185,7 @@ body {
     height: auto; /* Maintient les proportions */
   }
 
-  .container {
+  .best-movie-block {
     display: grid;
     grid-template-columns: 0.9fr 2.1fr;
     align-items: center;
@@ -193,7 +193,7 @@ body {
     padding: 2%;
   }
 
-  .image-container {
+  .images-grid {
     grid-template-columns: repeat(2, 1fr);
     display: grid; /* Utilisation de Grid Layout */
     column-gap: 50px; /* Espacement entre les images */
@@ -267,7 +267,7 @@ body {
     height: auto; /* Maintient les proportions */
   }
 
-  .container {
+  .best-movie-block {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
@@ -276,7 +276,7 @@ body {
     padding: 2%;
   }
 
-  .image-container {
+  .images-grid {
     grid-template-columns: 1fr;
     display: grid; /* Utilisation de Grid Layout */
     gap: 50px; /* Espacement entre les images */
