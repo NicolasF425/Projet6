@@ -1,6 +1,7 @@
 # Projet 6 de la formation
 
-## Front end avec acces api rest
+
+## Front end avec accès api rest
 
 API disponible ici : https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR
 
